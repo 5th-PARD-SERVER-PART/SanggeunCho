@@ -100,13 +100,13 @@ public class RestMappingController {
 }
 ```
 
-![get](/images/get_chicken_image.png)
+![get](images/get_chicken_image.png)
 
-![post](/images/post_chicken_image.png)
+![post](images/post_chicken_image.png)
 
-![getId](/images/get_chickenId_image.png)
+![getId](images/get_chickenId_image.png)
 
-![deleteId](/images/delete_chickenId_image.png)
+![deleteId](images/delete_chickenId_image.png)
 
 그렇다.. 매핑을 해줬다.. 사실 매핑의 개념은 직접 사용해보기 전까지는 이렇게 용도에 따라 매핑을 나누는구나 정도만 이해할 수 있을 것 같다.
 
