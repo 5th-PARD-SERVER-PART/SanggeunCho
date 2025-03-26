@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>야식 추천기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding-top: 100px;
+            background-color: #fef5e7;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65c50;
+        }
+        #result {
+            margin-top: 40px;
+            font-size: 2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<h1>오늘의 야식은?</h1>
+<button onclick="pickFood()">🎲 랜덤 추천 받기</button>
+<div id="result"></div>
+
+<script>
+    const foods = ['🍕 피자', '🍗 치킨', '🐷 족발'];
+
+    function pickFood() {
+        const random = Math.floor(Math.random() * foods.length);
+        const selected = foods[random];
+        document.getElementById('result').innerText = selected;
+    }
+</script>
+</body>
+</html>
