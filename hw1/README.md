@@ -71,4 +71,53 @@ else가 아니라 ```else if(state == 3)``` 을 받아야 하는 거 아닌가 �
 
 치킨 열마리 먹고 싶다. 먹을 수 있다고는 안했다.
 
-```@RequestParam```을 사용하면
+```@RequestParam```을 사용하여 변수를 지정해줄 수 있다. 이 때 우리는 ```required```로 중요도?를 정할 수 있다. 꼭 받아야 하는 내용은 받아야 하고 그렇지 않은 내용은 적지 않아도 된다. 이 때 ```defaultValue```를 통해 값을 적지 않아도 알잘딱깔센으로 처리할 수 있다.
+
+```
+@RestController
+@RequestMapping("/chicken")
+public class RestMappingController {
+    @GetMapping("")
+    public String getChickens() {
+        return "Get Chicken's info";
+    }
+
+    @PostMapping("")
+    public String postChickens() {
+        return "Post Chickens's info";
+    }
+
+    @GetMapping("/{chickenId}")
+    public String getChickenByID(@PathVariable Integer chickenId) {
+        return chickenId + "# chicken is for you";
+    }
+
+    @DeleteMapping("/{chickenId}")
+    public String deleteChicken(@PathVariable Integer chickenId) {
+        return chickenId + "# chicken is not yours";
+    }
+
+}
+```
+
+![get](/images/get_chicken_image.png)
+
+![post](/images/post_chicken_image.png)
+
+![getId](/images/get_chickenId_image.png)
+
+![deleteId](/images/delete_chickenId_image.png)
+
+그렇다.. 매핑을 해줬다.. 사실 매핑의 개념은 직접 사용해보기 전까지는 이렇게 용도에 따라 매핑을 나누는구나 정도만 이해할 수 있을 것 같다.
+
+나중에 매핑으로 뭔가 다뤄봤을 때 제대로 정리해서 적어보자.
+
+## 꽁으로 상대방 컨트롤러 들어간 썰 푼다,,,
+
+![other controller](images/other_controller_image.png)
+
+처음에 들었을 땐 막막하기만 했던 옆사람 컨트롤러 접속해보기
+
+그래서 되게 오래 걸릴 줄 알았는데 좀 알아보니 우리가 URL에 입력하는 localhost는 우리의 로컬 서버라는 뜻이기에 상대방의 서버를 들어가기 위해서 IP주소를 입력한다는 것을 알았고 금방 끝나겠다 싶었다.
+
+하지만 내 파트너 '이' 친구는 멀리 살아서 적용해볼 사람이 없었는데 수요일에 세미나를 해서 경미가 이미 해놓은 컨트롤러를 쏠랑 들어가버렸다.
