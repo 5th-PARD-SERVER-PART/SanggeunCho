@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 @Entity
 @Builder
 
+@Table(name="orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

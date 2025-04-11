@@ -27,9 +27,11 @@ public class OrderService {
     }
 
     public OrderResponseDto read(Long orderId){
-        Order order = orderRepo.findById(orderId).get();
+        Order order = orderRepo.findById(orderId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 주문이 존재하지 않습니다."));
 
         return OrderResponseDto.builder()
+                .orderId(order.getOrderId())
                 .menu(order.getMenu())
                 .request(order.getRequest())
                 .price(order.getPrice())
@@ -38,16 +40,11 @@ public class OrderService {
                 .build();
     }
 
-    public Long getOrderMenu(String menu){
-        Order order = orderRepo.findByMenu(menu);
-
-        return order.getOrderId();
-    }
-
     public List<OrderResponseDto> readAll(){
         List<Order> orders = orderRepo.findAll();
         List<OrderResponseDto> orderDtos = orders.stream().map(
                 order -> OrderResponseDto.builder()
+                        .orderId(order.getOrderId())
                         .menu(order.getMenu())
                         .request(order.getRequest())
                         .price(order.getPrice())
@@ -62,6 +59,7 @@ public class OrderService {
         List<Order> orders = orderRepo.findByMenuAndPlaceAndPriceGreaterThanEqual(menu, place, price);
         List<OrderResponseDto> orderDtos = orders.stream().map(
                 order -> OrderResponseDto.builder()
+                        .orderId(order.getOrderId())
                         .menu(order.getMenu())
                         .request(order.getRequest())
                         .price(order.getPrice())
@@ -76,6 +74,7 @@ public class OrderService {
         List<Order> orders = orderRepo.findByPlaceAndRequestContaining(place, keyword);
         List<OrderResponseDto> orderDtos = orders.stream().map(
                 order -> OrderResponseDto.builder()
+                        .orderId(order.getOrderId())
                         .menu(order.getMenu())
                         .request(order.getRequest())
                         .price(order.getPrice())
@@ -90,6 +89,7 @@ public class OrderService {
         List<Order> orders = orderRepo.findByMenuOrderByOrderTimeDesc(menu);
         List<OrderResponseDto> orderDtos = orders.stream().map(
                 order -> OrderResponseDto.builder()
+                        .orderId(order.getOrderId())
                         .menu(order.getMenu())
                         .request(order.getRequest())
                         .price(order.getPrice())

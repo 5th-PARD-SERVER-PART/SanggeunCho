@@ -22,16 +22,9 @@ public class OrderController {
         orderService.save(orderDto);
     }
 
-    @GetMapping("/{orderID}")
+    @GetMapping("/{orderId}")
     public OrderResponseDto readById(@PathVariable Long orderId){
         return orderService.read(orderId);
-    }
-
-    @GetMapping("/{orderMenu}")
-    public ResponseEntity<Long> readByMenu(@RequestParam String menu){
-        Long responseValue = orderService.getOrderMenu(menu);
-
-        return new ResponseEntity<>(responseValue, HttpStatus.OK);
     }
 
     @GetMapping("")
@@ -50,12 +43,12 @@ public class OrderController {
     }
 
     @GetMapping("/third-jpa")
-    public List<OrderResponseDto> serachByMenuTimeDesc(@RequestParam String menu, @RequestParam String keyword){
+    public List<OrderResponseDto> serachByMenuTimeDesc(@RequestParam String menu){
         return orderService.findMenuTimeDesc(menu);
     }
 
     @PatchMapping("/{orderId}")
-    public void update(@PathVariable Long orderId, @RequestParam OrderRequestDto orderDto){
+    public void update(@PathVariable Long orderId, @RequestBody OrderRequestDto orderDto){
         orderService.update(orderId, orderDto);
     }
 
