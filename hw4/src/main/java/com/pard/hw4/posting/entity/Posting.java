@@ -26,7 +26,6 @@ public class Posting {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnore
     private User user;
 
     public static Posting from(String content, Timestamp date, User user) {

@@ -7,6 +7,7 @@ import com.pard.hw4.user.repo.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -23,7 +24,7 @@ public class UserService {
     }
 
     public void createUser(UserReqDto.UserCreateRequest req){
-        User u = new User(null, req.getName(), req.getPosting());
+        User u = new User(null, req.getName(), new ArrayList<>());
         userRepo.save(u);
     }
 

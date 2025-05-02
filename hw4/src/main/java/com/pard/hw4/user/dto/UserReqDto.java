@@ -1,5 +1,6 @@
 package com.pard.hw4.user.dto;
 
+import com.pard.hw4.posting.dto.PostingResDto;
 import com.pard.hw4.posting.entity.Posting;
 import com.pard.hw4.user.entity.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -32,6 +33,5 @@ public class UserReqDto {
     @AllArgsConstructor
     public static class UserCreateRequest{
         private String name;
-        private List<Posting> posting;
     }
 }

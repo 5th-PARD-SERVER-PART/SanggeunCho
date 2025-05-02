@@ -1,6 +1,7 @@
 package com.pard.hw4.user.entity;
 
 
+import com.pard.hw4.posting.dto.PostingResDto;
 import com.pard.hw4.posting.entity.Posting;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
