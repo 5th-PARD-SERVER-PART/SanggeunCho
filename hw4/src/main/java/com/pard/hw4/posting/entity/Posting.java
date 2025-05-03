@@ -1,6 +1,6 @@
 package com.pard.hw4.posting.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pard.hw4.likes.Entity.Likes;
 import com.pard.hw4.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,8 +30,11 @@ public class Posting {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(mappedBy = "posting")
+    private List<Likes> likes = new ArrayList<>();
+
     public static Posting from(String content, Timestamp date, User user) {
-        return new Posting(null, content, date, user);
+        return new Posting(null, content, date, user, null);
     }
 
     public void updateContent(String content) { this.content = content; }

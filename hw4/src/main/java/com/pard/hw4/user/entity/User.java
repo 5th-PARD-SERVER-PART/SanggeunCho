@@ -1,13 +1,14 @@
 package com.pard.hw4.user.entity;
 
 
-import com.pard.hw4.posting.dto.PostingResDto;
+import com.pard.hw4.likes.Entity.Likes;
 import com.pard.hw4.posting.entity.Posting;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,4 +24,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Posting> posting;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Likes> likes = new ArrayList<>();
 }

@@ -24,7 +24,7 @@ public class UserService {
     }
 
     public void createUser(UserReqDto.UserCreateRequest req){
-        User u = new User(null, req.getName(), new ArrayList<>());
+        User u = new User(null, req.getName(), new ArrayList<>(), null);
         userRepo.save(u);
     }
 
